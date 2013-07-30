@@ -1,5 +1,5 @@
 build:
-	@ssh windows 'C:\Users\Sam\build-and-test.bat'
+	@ssh windows 'C:\Users\Sam\build-and-test.bat' | grep -v "DX11S"
 
 push: commit
 	@git push
