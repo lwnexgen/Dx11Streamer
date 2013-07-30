@@ -84,7 +84,17 @@ ID3D11Device * createDirect3D11Device(IDXGIAdapter1 * pOutputAdapter) {
   D3D_FEATURE_LEVEL featureLevel;
   ID3D11DeviceContext * pDeviceContext;
   
-  if (D3D11CreateDevice(pOutputAdapter, D3D_DRIVER_TYPE_HARDWARE, NULL, 0, NULL, aFeatureLevels, ARRAYSIZE(aFeatureLevels), D3D11_SDK_VERSION, &pDevice, &featureLevel, &pDeviceContext) != S_OK) {
+  if (D3D11CreateDevice(
+			pOutputAdapter, 
+			D3D_DRIVER_TYPE_HARDWARE, 
+			NULL, 
+			0, 
+			aFeatureLevels, 
+			ARRAYSIZE(aFeatureLevels), 
+			D3D11_SDK_VERSION, 
+			&pDevice, 
+			&featureLevel, 
+			&pDeviceContext) != S_OK) {
     throw 4;
   }
   
