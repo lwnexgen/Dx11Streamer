@@ -44,6 +44,8 @@ int main()
 
     printf("duplicating %S attached to %S\n", oDesc.DeviceName, aDesc.Description);
 
+
+
     return 0;
   } catch (int e) {
     if (e == 1) {
@@ -60,6 +62,27 @@ int main()
       printf("couldn't get the parent of the attached adapter\n");
       return 1;
     }
+
+    if (e == 4) {
+      printf("couldn't initialize the Direct3D device\n");
+      return 1
+    }
+  }
+}
+
+ID3D11Device * createDirect3D11Device(IDXGIAdapter1 * pOutputAdapter) {
+  // Feature levels supported
+  D3D_FEATURE_LEVEL aFeatureLevels[] =
+    {
+      D3D_FEATURE_LEVEL_11_0,
+      D3D_FEATURE_LEVEL_10_1,
+      D3D_FEATURE_LEVEL_10_0,
+      D3D_FEATURE_LEVEL_9_1
+    };
+
+  ID3D11Device * pD3DDevice;
+  if (D3D11CreateDevice(pOutputAdapter, D3D_DRIVER_TYPE_HARDWARE, NULL, 0, NULL, aFeatureLevels, 5, ) != S_OK) {
+    throw 4;
   }
 }
 
