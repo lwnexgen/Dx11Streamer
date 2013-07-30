@@ -65,7 +65,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="C:\Program Files (x86)\Windows Kits\8.0\Lib\win8\um\x64\d3d11.lib" />
+    <Library Include="C:\Program Files (x86)\Windows Kits\8.0\Lib\win8\um\x86\d3d11.lib" />
     <Library Include="C:\Program Files (x86)\Windows Kits\8.0\Lib\win8\um\x86\dxgi.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
