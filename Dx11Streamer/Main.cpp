@@ -80,10 +80,13 @@ ID3D11Device * createDirect3D11Device(IDXGIAdapter1 * pOutputAdapter) {
 
   return 0;
 
-  // ID3D11Device * pD3DDevice;
-  // if (D3D11CreateDevice(pOutputAdapter, D3D_DRIVER_TYPE_HARDWARE, NULL, 0, NULL, aFeatureLevels, 5, ) != S_OK) {
-  //   throw 4;
-  // }
+  ID3D11Device * pDevice;
+  D3D_FEATURE_LEVEL featureLevel;
+  ID3D11DeviceContext * pDeviceContext;
+  
+  if (D3D11CreateDevice(pOutputAdapter, D3D_DRIVER_TYPE_HARDWARE, NULL, 0, NULL, aFeatureLevels, ARRAYSIZE(aFeatureLevels), D3D11_SDK_VERSION, &pDevice, &featureLevel, &pDeviceContext) != S_OK) {
+    throw 4;
+  }
 }
 
 IDXGIOutput1 * findAttachedOutput(IDXGIFactory1 * pFactory) {
