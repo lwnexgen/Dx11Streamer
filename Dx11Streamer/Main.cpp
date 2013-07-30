@@ -44,8 +44,6 @@ int main()
 
     printf("duplicating %S attached to %S\n", oDesc.DeviceName, aDesc.Description);
 
-
-
     return 0;
   } catch (int e) {
     if (e == 1) {
@@ -80,10 +78,12 @@ ID3D11Device * createDirect3D11Device(IDXGIAdapter1 * pOutputAdapter) {
       D3D_FEATURE_LEVEL_9_1
     };
 
-  ID3D11Device * pD3DDevice;
-  if (D3D11CreateDevice(pOutputAdapter, D3D_DRIVER_TYPE_HARDWARE, NULL, 0, NULL, aFeatureLevels, 5, ) != S_OK) {
-    throw 4;
-  }
+  return 0;
+
+  // ID3D11Device * pD3DDevice;
+  // if (D3D11CreateDevice(pOutputAdapter, D3D_DRIVER_TYPE_HARDWARE, NULL, 0, NULL, aFeatureLevels, 5, ) != S_OK) {
+  //   throw 4;
+  // }
 }
 
 IDXGIOutput1 * findAttachedOutput(IDXGIFactory1 * pFactory) {
