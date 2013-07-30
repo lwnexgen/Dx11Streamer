@@ -63,7 +63,7 @@ int main()
 
     if (e == 4) {
       printf("couldn't initialize the Direct3D device\n");
-      return 1
+      return 1;
     }
   }
 }
