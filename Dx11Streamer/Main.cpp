@@ -44,7 +44,8 @@ int main()
 
     printf("duplicating %S attached to %S\n", oDesc.DeviceName, aDesc.Description);
 
-    createDirect3D11Device(pAttachedOutputAdapter);
+    I3D11Device * pD3Device = createDirect3D11Device(pAttachedOutputAdapter);
+    printf("created D3D11 adapter at %p\n", pD3Device);
 
     return 0;
   } catch (int e) {
