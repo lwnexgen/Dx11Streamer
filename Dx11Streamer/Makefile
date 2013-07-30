@@ -1,7 +1,10 @@
 build:
 	@ssh windows 'C:\Users\Sam\build-and-test.bat'
 
-push:
+push: commit
+	@git push
+
+commit:
 	@git commit -a -m "changeset for `date +%Y%m%d%s`"
 
 test:
