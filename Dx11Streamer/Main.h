@@ -11,3 +11,4 @@ const int MINOR = 0;
 const int RELEASE = 1;
 
 IDXGIOutput1 * findAttachedOutput(IDXGIFactory1 * pFactory);
+ID3D11Device * createDirect3D11Device(IDXGIOutput1 * pAttachedOutputAdapter);
