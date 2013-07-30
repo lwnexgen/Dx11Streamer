@@ -84,21 +84,23 @@ ID3D11Device * createDirect3D11Device(IDXGIAdapter1 * pOutputAdapter) {
   D3D_FEATURE_LEVEL featureLevel;
   ID3D11DeviceContext * pDeviceContext;
   
-  if (D3D11CreateDevice(
-			pOutputAdapter, 
-			D3D_DRIVER_TYPE_HARDWARE, 
-			NULL, 
-			0, 
-			aFeatureLevels, 
-			ARRAYSIZE(aFeatureLevels), 
-			D3D11_SDK_VERSION, 
-			&pDevice, 
-			&featureLevel, 
-			&pDeviceContext) != S_OK) {
-    throw 4;
+  HRESULT hCreateDevice = D3D11CreateDevice(pOutputAdapter, 
+					    D3D_DRIVER_TYPE_HARDWARE, 
+					    NULL, 
+					    0, 
+					    aFeatureLevels, 
+					    ARRAYSIZE(aFeatureLevels), 
+					    D3D11_SDK_VERSION, 
+					    &pDevice, 
+					    &featureLevel, 
+					    &pDeviceContext);
+  if (hCreateDevice == S_OK) {
+    return pDevice;
   }
-  
-  return pDevice;
+
+  printf("error creating D3D11 devices: 0x%X\n", hCreateDevice);
+
+  throw 4;
 }
 
 IDXGIOutput1 * findAttachedOutput(IDXGIFactory1 * pFactory) {
