@@ -2,6 +2,7 @@
 #include <dxgi1_2.h>
 #include <vector>
 #include <windows.h>
+#include <d3d11.h>
 
 const char * NAME = "Dx11Streamer";
 
