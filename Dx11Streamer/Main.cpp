@@ -44,6 +44,8 @@ int main()
 
     printf("duplicating %S attached to %S\n", oDesc.DeviceName, aDesc.Description);
 
+    createDirect3D11Device(pAttachedOutputAdapter);
+
     return 0;
   } catch (int e) {
     if (e == 1) {
@@ -69,7 +71,6 @@ int main()
 }
 
 ID3D11Device * createDirect3D11Device(IDXGIAdapter1 * pOutputAdapter) {
-  // Feature levels supported
   D3D_FEATURE_LEVEL aFeatureLevels[] =
     {
       D3D_FEATURE_LEVEL_11_0,
@@ -85,6 +86,8 @@ ID3D11Device * createDirect3D11Device(IDXGIAdapter1 * pOutputAdapter) {
   if (D3D11CreateDevice(pOutputAdapter, D3D_DRIVER_TYPE_HARDWARE, NULL, 0, NULL, aFeatureLevels, ARRAYSIZE(aFeatureLevels), D3D11_SDK_VERSION, &pDevice, &featureLevel, &pDeviceContext) != S_OK) {
     throw 4;
   }
+  
+  return pDevice;
 }
 
 IDXGIOutput1 * findAttachedOutput(IDXGIFactory1 * pFactory) {
