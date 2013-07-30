@@ -78,8 +78,6 @@ ID3D11Device * createDirect3D11Device(IDXGIAdapter1 * pOutputAdapter) {
       D3D_FEATURE_LEVEL_9_1
     };
 
-  return 0;
-
   ID3D11Device * pDevice;
   D3D_FEATURE_LEVEL featureLevel;
   ID3D11DeviceContext * pDeviceContext;
