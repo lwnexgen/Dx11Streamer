@@ -45,6 +45,14 @@ int main()
 
     printf("duplicating '%S' attached to '%S'\n", oDesc.DeviceName, aDesc.Description);
     
+    IDXGIOutputDuplication * pOutputDuplication;
+    HRESULT hDuplicateOutput = pAttachedOutput->DuplicateOutput(pD3Device, &pOutputDuplication);
+    if (hDuplicateOutput != S_OK) {
+      printf("error duplicating output: 0x%X\n", hDuplicateOutput);
+
+      return 1;
+    }
+
     return 0;
   } catch (int e) {
     if (e == 1) {
