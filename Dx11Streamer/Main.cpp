@@ -73,10 +73,7 @@ int main()
 ID3D11Device * createDirect3D11Device(IDXGIAdapter1 * pOutputAdapter) {
   D3D_FEATURE_LEVEL aFeatureLevels[] =
     {
-      D3D_FEATURE_LEVEL_11_0,
-      D3D_FEATURE_LEVEL_10_1,
-      D3D_FEATURE_LEVEL_10_0,
-      D3D_FEATURE_LEVEL_9_1
+      D3D_FEATURE_LEVEL_11_0
     };
 
   ID3D11Device * pDevice;
