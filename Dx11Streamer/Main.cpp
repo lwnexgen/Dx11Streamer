@@ -45,7 +45,6 @@ int main()
     printf("duplicating %S attached to %S\n", oDesc.DeviceName, aDesc.Description);
 
     ID3D11Device * pD3Device = createDirect3D11Device(pAttachedOutputAdapter);
-    printf("created D3D11 adapter at %p\n", pD3Device);
 
     return 0;
   } catch (int e) {
@@ -86,12 +85,12 @@ ID3D11Device * createDirect3D11Device(IDXGIAdapter1 * pOutputAdapter) {
 
   D3D_DRIVER_TYPE DriverTypes[] =
     {
-      D3D_DRIVER_TYPE_UNKNOWN,
       D3D_DRIVER_TYPE_HARDWARE,
       D3D_DRIVER_TYPE_REFERENCE,
       D3D_DRIVER_TYPE_NULL,
       D3D_DRIVER_TYPE_SOFTWARE,
-      D3D_DRIVER_TYPE_WARP
+      D3D_DRIVER_TYPE_WARP,
+      D3D_DRIVER_TYPE_UNKNOWN
     };
   
   HRESULT hCreateDevice;
@@ -110,6 +109,9 @@ ID3D11Device * createDirect3D11Device(IDXGIAdapter1 * pOutputAdapter) {
 					      &featureLevel,
 					      &pDeviceContext);
     if (hCreateDevice == S_OK) {
+      printf("created D3D11 adapter at %p\n", pD3Device);
+      printf("used driver type: %i\n", driverType);
+
       return pDevice;
     } else {
       printf("error creating D3D11 device using %i\n", driverType);
