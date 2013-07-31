@@ -131,6 +131,9 @@ IDXGIOutput1 * findAttachedOutput(IDXGIFactory1 * pFactory) {
     UINT outputIndex = 0;
     IDXGIOutput * pOutput;
 
+    DXGI_ADAPTER_DESC aDesc;
+    pAdapter2->GetDesc(&aDesc);
+
     HRESULT hEnumOutputs = pAdapter -> EnumOutputs(outputIndex, &pOutput);
     while(hEnumOutputs != DXGI_ERROR_NOT_FOUND) {
       if (hEnumOutputs != S_OK) {
@@ -142,7 +145,7 @@ IDXGIOutput1 * findAttachedOutput(IDXGIFactory1 * pFactory) {
       DXGI_OUTPUT_DESC oDesc;
       pOutput->GetDesc(&oDesc);
 
-      if (oDesc.Description != "ATI Radeon HD 5800 Series") {
+      if (aDesc.Description != "ATI Radeon HD 5800 Series") {
         return (IDXGIOutput1*)pOutput;
       }
 
