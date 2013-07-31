@@ -73,7 +73,7 @@ int main()
 ID3D11Device * createDirect3D11Device(IDXGIAdapter1 * pOutputAdapter) {
   D3D_FEATURE_LEVEL aFeatureLevels[] =
     {
-      D3D_FEATURE_LEVEL_11_0
+      D3D_FEATURE_LEVEL_11_1
     };
 
   ID3D11Device * pDevice;
@@ -82,11 +82,6 @@ ID3D11Device * createDirect3D11Device(IDXGIAdapter1 * pOutputAdapter) {
 
   D3D_DRIVER_TYPE DriverTypes[] =
     {
-      D3D_DRIVER_TYPE_HARDWARE,
-      D3D_DRIVER_TYPE_REFERENCE,
-      D3D_DRIVER_TYPE_NULL,
-      D3D_DRIVER_TYPE_SOFTWARE,
-      D3D_DRIVER_TYPE_WARP,
       D3D_DRIVER_TYPE_UNKNOWN
     };
   
