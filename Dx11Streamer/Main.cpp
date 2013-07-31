@@ -145,7 +145,7 @@ IDXGIOutput1 * findAttachedOutput(IDXGIFactory1 * pFactory) {
       DXGI_OUTPUT_DESC oDesc;
       pOutput->GetDesc(&oDesc);
 
-      if (aDesc.Description != "ATI Radeon HD 5800 Series") {
+      if (oDesc.AttachedToDesktop) {
         return (IDXGIOutput1*)pOutput;
       }
 
