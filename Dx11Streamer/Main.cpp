@@ -91,10 +91,12 @@ ID3D11Device * createDirect3D11Device(IDXGIAdapter1 * pOutputAdapter) {
       D3D_DRIVER_TYPE_REFERENCE,
     };
   
+  HRESULT hCreateDevice;
+
   for (int driverTypeIndex = 0 ; driverTypeIndex < ARRAYSIZE(DriverTypes) ; driverTypeIndex++) {
     D3D_DRIVER_TYPE driverType = DriverTypes[driverTypeIndex];
 
-    HRESULT hCreateDevice = D3D11CreateDevice(pOutputAdapter, 
+    hCreateDevice = D3D11CreateDevice(pOutputAdapter, 
 					      driverType,
 					      NULL, 
 					      0, 
