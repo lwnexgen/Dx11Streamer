@@ -37,15 +37,12 @@ int main()
     DXGI_OUTPUT_DESC oDesc;
     pAttachedOutput->GetDesc(&oDesc);
 
-    IDXGIAdapter1 * pAttachedOutputAdapter = (IDXGIAdapter1 *)pOutputParent;
-
     DXGI_ADAPTER_DESC aDesc;
     pAttachedOutputAdapter->GetDesc(&aDesc);
 
-    printf("duplicating %S attached to %S\n", oDesc.DeviceName, aDesc.Description);
-
+    IDXGIAdapter1 * pAttachedOutputAdapter = (IDXGIAdapter1 *)pOutputParent;
     ID3D11Device * pD3Device = createDirect3D11Device(pAttachedOutputAdapter);
-
+    
     return 0;
   } catch (int e) {
     if (e == 1) {
