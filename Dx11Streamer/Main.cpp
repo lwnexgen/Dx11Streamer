@@ -109,7 +109,7 @@ ID3D11Device * createDirect3D11Device(IDXGIAdapter1 * pOutputAdapter) {
 					      &featureLevel,
 					      &pDeviceContext);
     if (hCreateDevice == S_OK) {
-      printf("created D3D11 adapter at %p\n", pD3Device);
+      printf("created D3D11 adapter at %p\n", pDevice);
       printf("used driver type: %i\n", driverType);
 
       return pDevice;
