@@ -43,7 +43,7 @@ int main()
     DXGI_ADAPTER_DESC aDesc;
     pAttachedOutputAdapter->GetDesc(&aDesc);
 
-    printf("duplicating %s attached to %s\n", oDesc.DisplayName, aDesc.Description);
+    printf("duplicating '%S' attached to '%S'\n", oDesc.DeviceName, aDesc.Description);
     
     return 0;
   } catch (int e) {
