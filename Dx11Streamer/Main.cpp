@@ -34,14 +34,16 @@ int main()
       throw 3;
     }
 
+    IDXGIAdapter1 * pAttachedOutputAdapter = (IDXGIAdapter1 *)pOutputParent;
+    ID3D11Device * pD3Device = createDirect3D11Device(pAttachedOutputAdapter);
+
     DXGI_OUTPUT_DESC oDesc;
     pAttachedOutput->GetDesc(&oDesc);
 
     DXGI_ADAPTER_DESC aDesc;
     pAttachedOutputAdapter->GetDesc(&aDesc);
 
-    IDXGIAdapter1 * pAttachedOutputAdapter = (IDXGIAdapter1 *)pOutputParent;
-    ID3D11Device * pD3Device = createDirect3D11Device(pAttachedOutputAdapter);
+    printf("duplicating %s attached to %s\n", oDesc.DisplayName, aDesc.Description);
     
     return 0;
   } catch (int e) {
