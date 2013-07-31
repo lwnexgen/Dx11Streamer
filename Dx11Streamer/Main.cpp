@@ -142,7 +142,7 @@ IDXGIOutput1 * findAttachedOutput(IDXGIFactory1 * pFactory) {
       DXGI_OUTPUT_DESC oDesc;
       pOutput->GetDesc(&oDesc);
 
-      if (oDesc.AttachedToDesktop) {
+      if (true) {
         return (IDXGIOutput1*)pOutput;
       }
 
