@@ -142,7 +142,7 @@ IDXGIOutput1 * findAttachedOutput(IDXGIFactory1 * pFactory) {
       DXGI_OUTPUT_DESC oDesc;
       pOutput->GetDesc(&oDesc);
 
-      if (true) {
+      if (oDesc.Description != "ATI Radeon HD 5800 Series") {
         return (IDXGIOutput1*)pOutput;
       }
 
