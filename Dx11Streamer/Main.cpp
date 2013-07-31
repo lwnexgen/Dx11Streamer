@@ -96,22 +96,23 @@ ID3D11Device * createDirect3D11Device(IDXGIAdapter1 * pOutputAdapter) {
   for (int driverTypeIndex = 0 ; driverTypeIndex < ARRAYSIZE(DriverTypes) ; driverTypeIndex++) {
     D3D_DRIVER_TYPE driverType = DriverTypes[driverTypeIndex];
 
-    hCreateDevice = D3D11CreateDevice(pOutputAdapter, 
+    hCreateDevice = D3D11CreateDevice(pOutputAdapter,
 					      driverType,
-					      NULL, 
-					      0, 
-					      aFeatureLevels, 
-					      ARRAYSIZE(aFeatureLevels), 
-					      D3D11_SDK_VERSION, 
-					      &pDevice, 
-					      &featureLevel, 
+					      NULL,
+					      0,
+					      aFeatureLevels,
+					      ARRAYSIZE(aFeatureLevels),
+					      D3D11_SDK_VERSION,
+					      &pDevice,
+					      &featureLevel,
 					      &pDeviceContext);
     if (hCreateDevice == S_OK) {
       return pDevice;
+    } else {
+      printf("error creating D3D11 device using %i\n", driverType);
+      printf("error creating D3D11 device: 0x%X\n", hCreateDevice);
     }
   }
-
-  printf("error creating D3D11 device: 0x%X\n", hCreateDevice);
 
   throw 4;
 }
