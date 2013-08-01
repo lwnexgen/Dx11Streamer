@@ -64,6 +64,9 @@ int main()
     while (true) {
       HRESULT hNextFrame = pOutputDuplication->AcquireNextFrame(17, pFrameInfo, &pDesktopResource);
 
+      printf("frame info : %p\n", pFrameInfo);
+      printf("desktop res: %p\n", pDesktopResource);
+
       HRESULT hReleaseFrame = pOutputDuplication->ReleaseFrame();
     }
 
