@@ -58,15 +58,18 @@ int main()
 
     printf("able to duplicate a %ix%i desktop\n", odDesc.ModeDesc.Width, odDesc.ModeDesc.Height);
 
-    DXGI_OUTDUPL_FRAME_INFO * pFrameInfo;
+    DXGI_OUTDUPL_FRAME_INFO frameInfo;
     IDXGIResource * pDesktopResource;
 
     while (true) {
-      HRESULT hNextFrame = pOutputDuplication->AcquireNextFrame(17, pFrameInfo, &pDesktopResource);
+      HRESULT hNextFrame = pOutputDuplication->AcquireNextFrame(17, &frameInfo, &pDesktopResource);
+      
+      DXGI_MAPPED_RECT frameData;
+      HRESULT hMapDesktopSurface = pOutputDuplication->MapDesktopSurface(&frameData);
+      
+      printf("got %i bytes of desktop image data\n", frameData.Pitch);
 
-      printf("frame info : %p\n", pFrameInfo);
-      printf("desktop res: %p\n", pDesktopResource);
-
+      HRESULT hUnMapDesktopSurface = pOutputDuplication->UnMapDesktopSurface();
       HRESULT hReleaseFrame = pOutputDuplication->ReleaseFrame();
     }
 
