@@ -67,8 +67,12 @@ int main()
       DXGI_MAPPED_RECT frameData;
       HRESULT hMapDesktopSurface = pOutputDuplication->MapDesktopSurface(&frameData);
       
-      printf("got %i bytes of desktop image data\n", frameData.Pitch);
-
+      if (hMapDesktopSurface == S_OK) {
+	printf("got %u bytes of desktop image data\n", frameData.Pitch);
+      } else {
+	printf("error mapping frame data: 0x%X\n", hMapDesktopSurface);
+      }
+      
       HRESULT hUnMapDesktopSurface = pOutputDuplication->UnMapDesktopSurface();
       HRESULT hReleaseFrame = pOutputDuplication->ReleaseFrame();
     }
