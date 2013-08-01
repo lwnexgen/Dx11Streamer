@@ -53,7 +53,10 @@ int main()
       return 1;
     }
 
-    
+    DXGI_OUTDUPL_DESC odDesc;
+    pOutputDuplication->GetDesc(&odDesc);
+
+    printf("able to duplicate a %ix%i desktop\n", odDesc.ModeDesc.Width, odDesc.ModeDesc.Height);
 
     return 0;
   } catch (int e) {
