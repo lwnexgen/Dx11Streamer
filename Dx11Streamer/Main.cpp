@@ -62,7 +62,7 @@ int main()
     IDXGIResource * pDesktopResource;
 
     while (true) {
-      HRESULT hNextFrame = pOutputDuplication->AcquireNextFrame(17, &frameInfo, &pDesktopResource);
+      HRESULT hNextFrame = pOutputDuplication->AcquireNextFrame(1000, &frameInfo, &pDesktopResource);
       
       DXGI_MAPPED_RECT frameData;
       HRESULT hMapDesktopSurface = pOutputDuplication->MapDesktopSurface(&frameData);
