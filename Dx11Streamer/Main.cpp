@@ -58,7 +58,28 @@ int main()
 
     printf("able to duplicate a %ix%i desktop\n", odDesc.ModeDesc.Width, odDesc.ModeDesc.Height);
 
+    DXGI_OUTDUPL_FRAME_INFO * pFrameInfo;
+    IDXGIResource * pDesktopResource;
+
+    while (true) {
+      HRESULT hNextFrame = pOutputDuplication->AcquireNextFrame(17, pFrameInfo, &pDesktopResource);
+
+      if (hNextFrame != S_OK) {
+	if (hNextFrame == DXGI_ERROR_WAIT_TIMEOUT) {
+	  printf("gimed out");
+	} else {
+	  printf("couldn't acquire next frame: 0x%X\n", hNextFrame);
+
+	  return 1;
+	}
+      }
+
+      HRESULT pOutputDuplication->ReleaseFrame();
+    }
+
+  done:
     return 0;
+
   } catch (int e) {
     if (e == 1) {
       printf("error enumerating outputs\n");
