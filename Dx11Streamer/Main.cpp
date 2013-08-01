@@ -53,6 +53,8 @@ int main()
       return 1;
     }
 
+    
+
     return 0;
   } catch (int e) {
     if (e == 1) {
@@ -93,7 +95,6 @@ ID3D11Device * createDirect3D11Device(IDXGIAdapter1 * pOutputAdapter) {
     };
   
   HRESULT hCreateDevice;
-
   for (int driverTypeIndex = 0 ; driverTypeIndex < ARRAYSIZE(DriverTypes) ; driverTypeIndex++) {
     D3D_DRIVER_TYPE driverType = DriverTypes[driverTypeIndex];
 
